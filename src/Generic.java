@@ -26,6 +26,12 @@ public class Generic {
         LimitBasket<Iphone> iphoneLimitBasket = new LimitBasket<>(new Iphone()); // Phone의 자식클래스
         //LimitBasket<Galaxy> galaxyLimitBasket = new LimitBasket<new Galaxy>(); // 에러 Phone의 자식클래스가 아님
 
+        GenericMethod<String> genericMethod = new GenericMethod<>("test");
+        genericMethod.<Integer>print(123); // 제네릭 메서드
+        genericMethod.print(1234); // 타입 지정 생략 가능
+
+
+
 
     }
 }
@@ -45,6 +51,9 @@ class Basket <T>{ // 제네릭 클래스,  T라는 타입 매겨변수 선언, �
     public void setItem(T item) {
         this.item = item;
     }
+
+
+
 }
 
 class LimitBasket <T extends Phone>{  // 제한된 제네릭, 인스턴스화 할때 Phone의 하위 클래스만 지정 가능
@@ -65,8 +74,57 @@ class LimitBasket <T extends Phone>{  // 제한된 제네릭, 인스턴스화 �
     public void setItem(T item) {
         this.item = item;
     }
+
+}
+
+
+class GenericMethod<T>{ // 1. 제네릭 클래스의 타입 매개변수
+    private T result;
+    public GenericMethod(T result) {
+        this.result = result;
+    }
+
+    public T getNum() {
+        return result;
+    }
+
+    public void setNum(T result) {
+        this.result = result;
+    }
+
+    public <T> void print(T element){ // 2. 제네릭 메소드의 타입 매겨변수,  1과 2는 서로 다르다.
+        System.out.println(element);
+        //System.out.println(element.length());  // 타입이 지정안됬기 때문에 특정클래스 메서드 사용 불가
+    }
+
+    public static <T> void print2(T elemnet){ // 제네릭 메서드는 static 사용가능
+        System.out.println("static 메서드");
+    }
+
+
+
 }
 
 class Phone{ }
 class Iphone extends Phone{}
 class Ipad{}
+
+class IphoneSe extends Iphone{}
+
+class User<T>{
+    public T phone;
+
+    public User(T phone) {
+        this.phone = phone;
+    }
+}
+
+class WildCard{
+    public void upLimit(User<? extends Phone> user){
+        System.out.println("My phone : "+ user.phone);
+    }
+    public void downLimit(User<? super Iphone> user){
+        System.out.println("My phone : "+ user.phone);
+
+    }
+}
