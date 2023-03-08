@@ -1,3 +1,5 @@
+package Collection;
+
 import java.util.*;
 public class MapEx {
     public static void main(String[] args) {

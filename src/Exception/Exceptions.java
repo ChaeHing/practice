@@ -1,8 +1,11 @@
+package Exception;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.nio.Buffer;
 
-public class Exception {
+public class Exceptions {
+
     public static void main(String[] args) {
         //BufferedReader notExist = new BufferedReader(new FileReader("없는 파일"));
         //notExist.readLine();
@@ -82,16 +85,17 @@ public class Exception {
         System.out.println("[프로그램 종료]");
         // Exception in thread "main" java.lang.NullPointerException
     */
-        /*
+/*
         try{
             System.out.println("[소문자 알파벳을 대문자로 출력하는 프로그램]");
-            printMyName(null); // 예외 발생
+            printMyName(null); // (1) 예외 발생 NullPointerException 발생
             printMyName("abc"); // 이 코드는 실행 되지 않음
         }
-        catch (ArithmeticException e){
+        catch (ArithmeticException e){ // (2) instanceOf 연산자를 통해 예외클래스의 인스턴스와 비교
+                                       // 예외처리 되지 않음
             System.out.println("ArithmeticException 발생");
         }
-        catch (NullPointerException e){
+        catch (NullPointerException e){ // (3) 일치하기 때문에 예외처리됨 {} 안 실행
             System.out.println("NullPointerException 발생");
 
             // 예외 정보 얻는 방법 세개
@@ -99,7 +103,7 @@ public class Exception {
             System.out.println("e.toString " + e.toString());
             e.printStackTrace();
         }
-        finally {
+        finally { // (4) 예외 발생 여부와 관계 없이 무조건 실행,  option 이기 때문에 생략 가능
             System.out.println("프로그램 종료");
         }
     }
@@ -107,27 +111,31 @@ public class Exception {
         String upperCaseAlphabet = str.toUpperCase();
         System.out.println(upperCaseAlphabet);
     }
-
+*/
     // [소문자 알파벳을 대문자로 출력하는 프로그램]
     // NullPointerException 발생
     // e.getMessage: null
     // e.toString java.lang.NullPointerException
     // 프로그램 종료
-    */
+
+    /*
         try {
             throwException();
         } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
-    }
+ }
 
     static void throwException() throws ClassNotFoundException, NullPointerException {
         Class.forName("java.lang.StringX");
     }
-
-
-
-
-
+     */
+        try {
+            Exception intendedException = new Exception("의도된 예외 만들기");
+            throw intendedException;
+        } catch (Exception e) {
+            System.out.println("고의로 예외 발생시키기 성공!");
+        }
+    }
 }
 

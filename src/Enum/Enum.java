@@ -1,3 +1,5 @@
+package Enum;
+
 import java.util.Arrays;
 
 public class Enum {

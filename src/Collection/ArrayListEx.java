@@ -1,3 +1,5 @@
+package Collection;
+
 import java.util.*;
 import java.util.logging.Handler;
 

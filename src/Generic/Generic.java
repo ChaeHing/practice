@@ -1,16 +1,18 @@
+package Generic;
+
 public class Generic {
 
-    // 타입을 구체적으로 지정하는 것이 아니라, 추후에 지정 할 수 있도록 일반화 해두는것 - Generic(일반적인)
+    // 타입을 구체적으로 지정하는 것이 아니라, 추후에 지정 할 수 있도록 일반화 해두는것 - Generic.Generic(일반적인)
     // 클래스 또는 메서드가 특정 데이터 타입에 얾매이지 않도록 해둔것
 
     public static void main(String[] args){
 
-        Basket<String> basket1 = new Basket<String>("Ipad"); // String으로 생성
+        Basket<String> basket1 = new Basket<String>("Generic.Ipad"); // String으로 생성
         Basket<Integer> basket2 = new Basket<Integer>(340); // Interger로 생성
                                                                  // 타입 매개변수에 치환될 타입으로 기본 타입 사용 불가
                                                                  // int -> Integer, double -> Double  (래퍼클래스 사용)
 
-        System.out.println(basket1.getItem());  // Ipad
+        System.out.println(basket1.getItem());  // Generic.Ipad
         System.out.println(basket2.getItem()); // 340
 
         basket1.setItem("Galaxy Tab");
@@ -22,9 +24,9 @@ public class Generic {
        // phoneBasket.setItem(new Galaxy()); // Phone과 아무사이도 아니기 때문에 에러
 
         // 제한된 클래스 사용
-        LimitBasket<Phone> phoneLimitBasket = new LimitBasket<>(new Phone()); // Phone 자신
+        LimitBasket<Phone> phoneLimitBasket = new LimitBasket<>(new Phone()); // Generic.Phone 자신
         LimitBasket<Iphone> iphoneLimitBasket = new LimitBasket<>(new Iphone()); // Phone의 자식클래스
-        //LimitBasket<Galaxy> galaxyLimitBasket = new LimitBasket<new Galaxy>(); // 에러 Phone의 자식클래스가 아님
+        //Generic.LimitBasket<Galaxy> galaxyLimitBasket = new Generic.LimitBasket<new Galaxy>(); // 에러 Phone의 자식클래스가 아님
 
         GenericMethod<String> genericMethod = new GenericMethod<>("test");
         genericMethod.<Integer>print(123); // 제네릭 메서드
