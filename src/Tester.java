@@ -20,9 +20,9 @@ public class Tester {
         System.out.println("----------------------");
         System.out.println("stack 삭제후");
         System.out.println(stack);
-        System.out.println("맨처음 입력한 데이터가 삭제 된다.");
+        System.out.println("마지막에 입력한 데이터가 삭제 된다.");
 
-        // 가장상단값 출력
+        // 가장상단값 출력, 마지막에 넣은 데이터
         System.out.println("----------------------");
         System.out.println("가장 상단값");
         System.out.println(stack.peek());
